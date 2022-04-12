@@ -6,30 +6,51 @@
 5. Sort the list of dictionaries according to the total area are sepal and petal.'''
 
 import json
-file=open('iris.json','r')
-iris=file.read()
-print("List: \n",iris.split("\n"))
-d=json.loads(iris)
-print("List of Dictionary: \n",d)
-print("Details of all flowers whose species is \"setosa\" : ")
-petal_area=[]
-sepal_area=[]
-dup_species=[]
-total_area=[]
-for i in d:
-    if(i['species']=='setosa'):
-        print(i)
-    dup_species.append(i['species'])
-    petal_area.append(i['petalLength']*i['petalWidth'])
-    sepal_area.append(i['sepalLength']*i['sepalWidth'])
-    total_area.append(sepal_area[i]*petal_area[i])
-dup_species=set(dup_species)
-species=list(dup_species)
-print("Species \tPetal area(min) \tSepal area(max)")
-for j in range(len(species)):
-    for k in d:
-        if(k['species']==species[j]):
-            print(species[j],round(min(petal_area)),max(sepal_area))
-sortd=(sorted(sort_d,key=lambda i:i[total_area]))
-for l in sortd:
-    print(l)
+
+
+def read_as_list(filename):
+  fp=open(filename,"r")                             
+  data=fp.readlines() 	
+  print("List : ")		          #The file elements as list elements
+  fp.close()
+  return data
+   
+def read_as_dict(filename):
+  fp=open(filename,'r')                            
+  dictionary=json.load(fp)
+  print("List of dictionary : ") 	
+  return dictionary			 #list of dictionary
+
+def print_details_setosa(data_dict):
+  print("\nAll flowers whose species is setosa\n")
+  for i in data_dict:					  #'i' is the dictionary element in the list
+    if (i['species']=='setosa'):
+        print('Sepel length : %f '%(i['sepalLength']))
+
+def get_areas(data_dict):
+  petal_areas=[i['petalLength']*i['petalWidth']  for i in data_dict]
+  sepal_areas=[i['sepalLength']*i['sepalWidth'] for i in data_dict]
+  return petal_areas,sepal_areas
+
+def get_min_petal_area(petal_areas):
+  m1 = min([area for area,species in petal_areas if species=='setosa'])
+  m2 = min([area for area,species in petal_areas if species=='virginica'])
+  m3 = min([area for area,species in petal_areas if species=='versicolor'])
+  return (m1,m2,m3)
+def get_max_sepal_area(sepal_areas):
+  m4 = max([area for area,species in petal_areas if species=='setosa'])
+  m5 = max([area for area,species in petal_areas if species=='virginica'])
+  m6 = max([area for area,species in petal_areas if species=='versicolor'])
+  return(m4,m5,m6)
+
+data = read_as_list('iris.json')
+for line in data:
+  print(line)
+
+data_dict = read_as_dict('iris.json')
+for row in data_dict:
+  print(row)
+
+print_details_setosa(data_dict)
+abc,pqr=get_areas(data_dict)
+get_min_petal_area(abc)
