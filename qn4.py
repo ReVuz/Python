@@ -2,7 +2,7 @@
 Provider constructor that enables initialization with one parameter (for cube), two parameters (for square prism)
 three parameters (rectangular prism). Also, provide functions to calculate area and volume.
 Create a list of N boxes with random measurements and print the details of the box with maximum volume: area ratio.'''
-import random as ran
+import random
 
 class Box:
   def __init__(self,l,b,h):
@@ -55,19 +55,19 @@ rect_ratio=[]
 for i in range(2):
   #cube
   c.append("")
-  c[i]=(Box(ran.randint(1,100),None,None))
+  c[i]=(Box(random.randint(1,100),None,None))
   c[i].details()
   cube_ratio.append(c[i].ratio())
 
   #sqr
   s.append("")
-  s[i]=Box(ran.randrange(1,100),ran.randint(1,100),None)
+  s[i]=Box(random.randrange(1,100),random.randint(1,100),None)
   s[i].details()
   sqr_ratio.append(s[i].ratio())
 
   #rect
   r.append("")
-  r[i]=Box(ran.randint(1,100),ran.randint(1,100),ran.randint(1,100))
+  r[i]=Box(random.randint(1,100),random.randint(1,100),random.randint(1,100))
   r[i].details()
   rect_ratio.append(r[i].ratio()) 
 print("\nThe ratios of cube square and rectangle")
