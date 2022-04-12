@@ -70,10 +70,7 @@ for i in range(2):
   r[i]=Box(random.randint(1,100),random.randint(1,100),random.randint(1,100))
   r[i].details()
   rect_ratio.append(r[i].ratio()) 
-print("\nThe ratios of cube square and rectangle")
-print(cube_ratio)#just to nkow whats going on
-print(sqr_ratio)
-print(rect_ratio)
+  rect_ratio.append(r[i].ratio()) 
 
 full_ratio=[max(cube_ratio),max(sqr_ratio),max(rect_ratio)] #getting the highest ratio from each shape
 ind=full_ratio.index(max(full_ratio))
