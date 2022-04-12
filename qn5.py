@@ -1,42 +1,42 @@
 class Shapes:
-  _volume = None
-  _area   = None
+  volume = None
+  area   = None
 
   def printVolume(self):
-    print("Volume = ",self._volume)
+    print("Volume = ",self.volume)
   def printArea(self):
-    print("Area = ",self._area)
+    print("Area = ",self.area)
 
 
 class Cylinder(Shapes):
-  __height = None
-  __radius = None
+  height = None
+  radius = None
 
   def __init__(self,r,h):
-    self.__height=h
-    self.__radius=r
+    self.height=h
+    self.radius=r
 
   def calcArea(self):
-    self._area= 6.28*self.__radius*(self.__height + self.__radius)
+    self.area= 6.28*self.radius*(self.height + self.radius)
 
   def calcVolume(self):
-    self._volume=3.14*self.__radius*self.__radius*self.__height
+    self.volume=3.14*self.radius*self.radius*self.height
 
 
 class Sphere(Shapes):
-  __radius = None
+  radius = None
 
   def __init__(self,r):
-    self.__radius = r
+    self.radius = r
 
   def calcVolume(self):
-    self._volume = 4.19*self.__radius*self.__radius*self.__radius
+    self.volume = 4.19*self.radius*self.radius*self.radius
 
   def calcArea(self):
-    self._area = 12.56*self.__radius*self.__radius
+    self.area = 12.56*self.radius*self.radius
 
 r1=float(input("Enter the radius of Sphere : "))
-print("---Sphere---")
+print("\nArea and Volume Of Sphere\n")
 s = Sphere(r1)
 s.calcVolume()
 s.calcArea()
@@ -44,9 +44,9 @@ s.printVolume()
 s.printArea()
 print(" ")
 
-r2=float(input("Enter the radius of Cylinder : "))
-h=float(input("Enter the height of cylinder : "))
-print("Cylinder---")
+r2=float(input("Enter the radius of a Cylinder : "))
+h=float(input("Enter the height of a Cylinder : "))
+print("\nArea and Volume of Cylinder\n")
 c= Cylinder(r2,h)
 c.calcArea()
 c.calcVolume()
