@@ -7,42 +7,42 @@ from random import *
 class Box:
   def __init__(self,l,b,h):
     if (b==None and h==None):
-      self.__length=self.__breadth=self.__height=l
+      self.length=self.breadth=self.height=l
       print("\ncube")
     elif (h==None):
-      self.__length=self.__breadth=l
-      self.__height=b
+      self.length=self.breadth=l
+      self.height=b
       print("\nsquare")
     else:
-      self.__length=l
-      self.__breadth=b
-      self.__height=h
+      self.length=l
+      self.breadth=b
+      self.height=h
       print("\nrectangle")
 
   def area(self):
-    self.__area=self.__length*self.__breadth
+    self.area=self.length*self.breadth
 
   def vol(self):
-    self.__vol=self.__length*self.__breadth*self.__breadth*self.__height
+    self.vol=self.length*self.breadth*self.breadth*self.height
 
   def details(self):
     self.area()
     self.vol()
-    if self.__length==self.__breadth==self.__height:
-      print("length ",self.__length)
-    elif self.__length==self.__breadth:
-      print("length",self.__length,
-      "breadth",self.__breadth)
+    if self.length==self.breadth==self.height:
+      print("length ",self.length)
+    elif self.length==self.breadth:
+      print("length",self.length,
+      "breadth",self.breadth)
     else:
-      print("length",self.__length,
-        "breadth",self.__breadth,
-        "hieght",self.__height)
+      print("length",self.length,
+        "breadth",self.breadth,
+        "hieght",self.height)
     
-    print("area is: ",self.__area)
-    print("volume is: ",self.__vol)
+    print("Area: ",self.area)
+    print("Volume: ",self.vol)
 
   def ratio(self):
-    ratio=self.__vol/self.__area
+    ratio=self.vol/self.area
     return ratio
 
 c=[]
