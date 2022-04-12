@@ -2,47 +2,47 @@
 Provider constructor that enables initialization with one parameter (for cube), two parameters (for square prism)
 three parameters (rectangular prism). Also, provide functions to calculate area and volume.
 Create a list of N boxes with random measurements and print the details of the box with maximum volume: area ratio.'''
-from random import *
+import random
 
 class Box:
   def __init__(self,l,b,h):
     if (b==None and h==None):
       self.length=self.breadth=self.height=l
-      print("\ncube")
+      print("\nCube")
     elif (h==None):
       self.length=self.breadth=l
       self.height=b
-      print("\nsquare")
+      print("\nSquare Prism")
     else:
       self.length=l
       self.breadth=b
       self.height=h
-      print("\nrectangle")
+      print("\nRectangle Prism")
 
   def area(self):
-    self.area=self.length*self.breadth
+    self.ar=self.length*self.breadth
 
   def vol(self):
-    self.vol=self.length*self.breadth*self.breadth*self.height
+    self.volume=self.length*self.breadth*self.breadth*self.height
 
   def details(self):
     self.area()
     self.vol()
     if self.length==self.breadth==self.height:
-      print("length ",self.length)
+      print("\nlength ",self.length)
     elif self.length==self.breadth:
-      print("length",self.length,
-      "breadth",self.breadth)
+      print("\nlength",self.length,
+      "\nbreadth",self.breadth)
     else:
-      print("length",self.length,
-        "breadth",self.breadth,
-        "hieght",self.height)
+      print("\nlength",self.length,
+        "\nbreadth",self.breadth,
+        "\nheight",self.height)
     
-    print("Area: ",self.area)
-    print("Volume: ",self.vol)
+    print("\nArea: ",self.ar)
+    print("\nVolume: ",self.volume)
 
   def ratio(self):
-    ratio=self.vol/self.area
+    ratio=self.volume/self.ar
     return ratio
 
 c=[]
@@ -51,8 +51,8 @@ s=[]
 cube_ratio=[]
 sqr_ratio=[]
 rect_ratio=[]
-
-for i in range(2):
+n= int(input("enter range : "))
+for i in range(n):
   #cube
   c.append("")
   c[i]=(Box(random.randint(1,100),None,None))
@@ -78,18 +78,18 @@ print()
 if ind==0:                                                  #printing the shape details ofthe highest ratio shape
   pos=int(cube_ratio.index(max(cube_ratio)))
   print("max cube",max(cube_ratio))
-  print("\nCube with Most area to volume ratio: ")
+  print("\nMost area to volume ratio is for Cube ")
   c[pos].details()
-  print(" THE ratio is: ",c[pos].ratio())
+  print(" The ratio is: ",c[pos].ratio())
 elif ind==1:
   pos=sqr_ratio.index(max(sqr_ratio))
-  print("\nSquare with Most area to volume ratio: ")
+  print("\nMost area to volume ratio is for Square Prism")
   s[pos].details()
-  print("THE ratio is: ",s[pos].ratio())
+  print("The ratio is: ",s[pos].ratio())
   
 elif ind==2:
   pos=rect_ratio.index(max(rect_ratio))
-  print("\nRectangle with Most area to volume ratio: ")
+  print("\nMost area to volume ratio is for Rectangle Prism")
   r[pos].details()
-  print("THE ratio is: ",r[pos].ratio())
+  print("The ratio is: ",r[pos].ratio())
         
