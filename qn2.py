@@ -6,20 +6,22 @@
 5. After sorting them individually, merge the two lists to create a single sorted list.'''
 
 string=str(input("Enter some numbers : "))
-print("String : ",string)
-l=string.split()
-print("String converted to list : ",l)
-tup=tuple([int(i) for i in l])
-print("List to tuple : ",tup)
-s=set(tup)
-print("After removing the duplicates : ",s)
-l2=list(s)
-print("After converting to list again : ",l2)
-l3=list()
-for i in l2:
-    x=(i*i)-i
-    l3.append(x)
-print("List after evaluation : ",l3)
-l4=[]
-l4=l2+l3
-print("Final sorted list : ",sorted(l4))
+def str_num(string):
+    print("String : ",string)
+    l=string.split()
+    print("String converted to list : ",l)
+    tup=tuple([int(i) for i in l])
+    print("List to tuple : ",tup)
+    s=set(tup)
+    print("After removing the duplicates : ",s)
+    l2=list(s)
+    print("After converting to list again : ",l2)
+    l3=list()
+    for i in l2:
+        x=(i*i)-i
+        l3.append(x)
+    print("List after evaluation : ",l3)
+    l4=[]
+    l4=l2+l3
+    print("Final sorted list : ",sorted(l4))
+data=str_num(string)
