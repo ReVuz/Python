@@ -23,25 +23,40 @@ def read_as_dict(filename):
 
 def print_details_setosa(data_dict):
   print("\nAll flowers whose species is setosa\n")
-  for i in data_dict:					  #'i' is the dictionary element in the list
+  for i in data_dict:			      
     if (i['species']=='setosa'):
         print('Sepel length : %f '%(i['sepalLength']))
 
-def get_areas(data_dict):
-  petal_areas=[i['petalLength']*i['petalWidth']  for i in data_dict]
-  sepal_areas=[i['sepalLength']*i['sepalWidth'] for i in data_dict]
-  return petal_areas,sepal_areas
-
-def get_min_petal_area(petal_areas):
-  m1 = min([area for area,species in petal_areas if species=='setosa'])
-  m2 = min([area for area,species in petal_areas if species=='virginica'])
-  m3 = min([area for area,species in petal_areas if species=='versicolor'])
-  return (m1,m2,m3)
-def get_max_sepal_area(sepal_areas):
-  m4 = max([area for area,species in petal_areas if species=='setosa'])
-  m5 = max([area for area,species in petal_areas if species=='virginica'])
-  m6 = max([area for area,species in petal_areas if species=='versicolor'])
-  return(m4,m5,m6)
+def min_and_max_area(data):
+  species_list = list()             # species names
+  for i in data:
+    species_list.append(i['species'])
+  #removing duplicates
+  species_list = list(set(species_list))
+  sepal_area = []                #list to store sepal and petal area
+  petal_area = []
+  for i in species_list:
+    for j in data:
+      if(j['species']==i):
+        sepal_area.append(j['sepalLength']*j['sepalWidth'])
+        petal_area.append(j['petalLength']*j['petalWidth'])
+    print()
+    print(i.capitalize())
+    #print minimum and maximum areas
+    print("Minimum Petal Area : ",round(min(petal_area),2))
+    print("Maximum Sepal Area : ",round(max(sepal_area),2))
+    sepal_area.clear()
+    petal_area.clear()
+    
+def total_sort(data):
+  for i in data:
+    #add total area to dictionary
+    total_area = (i['petalLength']*i['petalWidth'])+(i['sepalLength']*i['sepalWidth'])
+    i.update({'total_area':round(total_area,2)})
+  sortedList = sorted(data,key=lambda i:i['total_area'])
+  print("\nSorted List : ")
+  for i in sortedList:
+    print(i)
 
 data = read_as_list('iris.json')
 for line in data:
@@ -52,5 +67,5 @@ for row in data_dict:
   print(row)
 
 print_details_setosa(data_dict)
-abc,pqr=get_areas(data_dict)
-get_min_petal_area(abc)
+min_and_max_area(data_dict)
+total_sort(data_dict)
